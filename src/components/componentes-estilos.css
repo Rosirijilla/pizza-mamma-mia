@@ -1,0 +1,73 @@
+/*Componentes Navbar*/
+.navbar-nav {
+  gap: 0.5rem;
+}
+.nav-item {
+  border: 1px solid white;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.icon{
+    padding-right: 0.5rem;
+}
+
+.icon-compra{
+    color: white;
+}
+/*Componentes Navbar*/
+
+/*Css del Header*/
+.container-header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../assets/img/header-pizza.png);
+  color: white;
+  height: 15rem;
+  background-position: center; /*Vista imagen completa*/
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.subtitle {
+  padding-bottom: 1rem;
+  border-bottom: white;
+}
+
+/*Fin Css del Header*/
+
+/*Css Galería*/
+.contenedor-cartas{
+    border: 4px solid #ffe078;
+    border-radius: 3px;
+}
+
+/*Css Cardpizza*/
+.botones{
+    display: flex;
+    justify-content: space-around;
+}
+
+.card-title{
+    border-bottom: 1px solid #b6b6b6;
+    padding-bottom: 0.3rem;
+}
+.ingredientes{
+    text-align: center;
+    border-bottom: 1px solid #b6b6b6;
+    padding-bottom: 0.3rem;
+}
+.precio{
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+/*Css Footer*/
+footer{
+    height: 4rem;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
