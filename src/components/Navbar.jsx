@@ -3,6 +3,7 @@ import "./componentes-estilos.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPizzaSlice, faLock, faUser, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
+
 const Navbar = () => {
   const total = 25000;
   const token = false;
