@@ -1,17 +1,13 @@
-import { useState } from 'react'
-import Formulario from './Formulario'
-import Navbar from './Navbar'
-import Footer from './footer'
+import React from 'react';
+import Formulario from './Formulario';
 
 function Register() {
   return (
     <div>
-        <Navbar/>
-        <h1>Registra tu Cuenta</h1>
-        <Formulario/>
-        <Footer/>
+      <h1>Registra tu Cuenta</h1>
+      <Formulario />
     </div>
-  )
+  );
 }
 
-export default Register
+export default Register;

@@ -1,14 +1,11 @@
 import React from 'react'
-import Navbar from './Navbar'
 import Formulario2 from './Formulario2'
-import Footer from './footer'
 
 const Login = () => {
   return (
     <div>
-        <Navbar/>
+        <h1>Ingresa a tu Cuenta</h1>
         <Formulario2/>
-        <Footer/>
     </div>
   )
 }
