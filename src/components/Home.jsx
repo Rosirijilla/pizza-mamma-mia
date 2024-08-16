@@ -2,11 +2,11 @@ import React from "react";
 import Header from "./Header";
 import Galeria from "./Galeria";
 
-function Home() {
+function Home({count, setCount}) {
   return (
     <div>
       <Header/>
-      <Galeria/>
+      <Galeria count={count} setCount={setCount}/>
     </div>
   );
 }

@@ -1,0 +1,8 @@
+[
+    {"img": "./src/assets/img/napolitana.png", "nombre": "Pizza Napolitana", "ingredientes": "mozzarella, tomates, jamón, orégano", "precio": 5950},
+    {"img": "./src/assets/img/espanola.png", "nombre": "Pizza Española", "ingredientes": "mozzarella, gorgonzola, parmesano, provolone", "precio": 6950},
+    {"img": "./src/assets/img/peperoni.png", "nombre": "Pizza Pepperoni", "ingredientes": "mozzarella, pepperoni, orégano", "precio": 6950},
+    {"img": "./src/assets/img/hawaiana.png", "nombre": "Pizza Hawaiana", "ingredientes": "piña, salsa de tomate, pizza cheese, Prosciutto", "precio": 7950},
+    {"img": "./src/assets/img/margarita.png", "nombre": "Pizza Margarita", "ingredientes": "salsa de tomate, queso gauda, mozarella, albahaca, tomate cherry", "precio": 7950},
+    {"img": "./src/assets/img/newyork.png", "nombre": "Pizza New York", "ingredientes": "salchica Italiana, chile verde, cebolla, jamón, pepperoni.", "precio": 8950}
+]

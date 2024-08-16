@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPizzaSlice, faLock, faUser, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 
-const Navbar = () => {
-  const total = 25000;
+const Navbar = ({count}) => {
+  const total = count;
   const token = false;
   return (
       <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
@@ -66,7 +66,7 @@ const Navbar = () => {
               )}
             </ul>
             <span className="navbar-text text-info">
-            <FontAwesomeIcon className="icon icon-compra" icon={faCartShopping} /> Total: {total.toLocaleString("es-ES")}
+            <FontAwesomeIcon className="icon icon-compra" icon={faCartShopping} /> Total: {new Intl.NumberFormat('es-CL', {currency: 'CLP', style: 'currency'}).format(total)}
             </span>
           </div>
         </div>
