@@ -3,8 +3,10 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
+import Cart from "./components/Cart";
 //import Register from "./components/Register";
 //import Login from "./components/Login";
+import pizzas from "./components/pizzas.json"
 
 
 
@@ -14,10 +16,12 @@ function App() {
   return <>
   <div>
     <Navbar count={count}/>
-    <Home count={count} setCount={setCount}/>
+    <Cart pizzas={pizzas}/>
+    {/* <Home count={count} setCount={setCount}/> */}
     {/*
     <Register/>
     <Login/>
+    
     */}
     <Footer/>
   </div>
@@ -25,4 +29,3 @@ function App() {
 }
 
 export default App;
-
