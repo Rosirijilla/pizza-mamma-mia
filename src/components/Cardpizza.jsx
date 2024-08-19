@@ -1,49 +1,47 @@
 import React from "react";
+import "./componentes-estilos.css";
 
-function Cardpizza({img, nombre, ingredientes, precio, count, setCount}) {
+function Cardpizza({img, name, desc, ingredients, price, count, setCount}) {
 
-  function agregar(e) {
-    setCount(count+precio);
+  function agregar() {
+    setCount(count + price);
   }
 
-  function quitar(e) {
-    setCount(count-precio);
+  function quitar() {
+    if (count > 0) {
+      setCount(count - price);
+    }
   }
 
-  function ingredientesX(ingredientes){
-    let ingredientes2=ingredientes;
-    console.log(typeof(ingredientes2));
-    ingredientes2 = ingredientes.split(",");
-    console.log(ingredientes2[1]);
-
-    return(
+  function ingredientesX(ingredients) {
+    return (
       <ul>
-        {ingredientes2.map((producto, index)=>(
-          <li key={index}>{producto}</li>
+        {ingredients.map((producto, index) => (
+          <li className="listado" key={index}>{producto}</li>
         ))}
       </ul>
-    )
+    );
   }
-
-  
 
   return (
     <div>
       <div className="card">
-        <img src={img} className="card-img-top" alt={nombre} />
+        <img src={img} className="card-img-top" alt={name} />
         <div className="card-body">
-          <h5 className="card-title">{nombre}</h5>
-          <p className="card-text ingredientes">INGREDIENTES:<br></br><br></br>🍕 {ingredientesX(ingredientes)}</p>
-          <p className="card-text precio">{new Intl.NumberFormat('es-CL', {currency: 'CLP', style: 'currency'}).format(precio)}</p>
+          <h5 className="card-title">{name}</h5>
+          <p className="card-text ingredientes">INGREDIENTES 🍕: {ingredientesX(ingredients)}</p>
+          <p className="card-text precio">
+            {new Intl.NumberFormat('es-CL', { currency: 'CLP', style: 'currency' }).format(price)}
+          </p>
           <div className="botones">
-            <a href="#" className="btn btn-light btn-outline-dark">
+            <a href="#" className="btn btn-light btn-outline-dark" onClick={(e) => e.preventDefault()}>
               Ver Más 👀
             </a>
-            <a href="#" className="btn btn-dark" onClick={e=>agregar(e)}>
-            🛒Añadir
+            <a href="#" className="btn btn-dark" onClick={(e) => { e.preventDefault(); agregar(); }}>
+              🛒Añadir
             </a>
-            <a href="#" className="btn btn-danger" onClick={e=>quitar(e)}>
-            🛒Quitar
+            <a href="#" className="btn btn-danger" onClick={(e) => { e.preventDefault(); quitar(); }}>
+              🛒Quitar
             </a>
           </div>
         </div>

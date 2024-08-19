@@ -51,9 +51,10 @@
 .card-title{
     border-bottom: 1px solid #b6b6b6;
     padding-bottom: 0.3rem;
+    text-align: center;
 }
 .ingredientes{
-    text-align: center;
+    text-align: start;
     border-bottom: 1px solid #b6b6b6;
     padding-bottom: 0.3rem;
 }
@@ -62,6 +63,10 @@
     text-align: center;
     font-size: 1.5rem;
 }
+.listado{
+  text-align: start;
+}
+/*Fin Css Cardpizza*/
 
 /*Css Footer*/
 footer{
@@ -71,3 +76,4 @@ footer{
     justify-content: center;
     align-items: center;
 }
+/*Fin Css Footer*/

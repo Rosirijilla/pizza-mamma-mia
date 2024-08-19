@@ -9,7 +9,7 @@
       "jamón",
       "orégano"
     ],
-    "name": "napolitana",
+    "name": "Napolitana",
     "price": 5950,
     "cantidad": 1
   },
@@ -23,7 +23,7 @@
       "jamón",
       "choricillo"
     ],
-    "name": "española",
+    "name": "Española",
     "price": 7250,
     "cantidad": 1
   },
@@ -37,7 +37,7 @@
       "salame",
       "orégano"
     ],
-    "name": "salame",
+    "name": "Salame",
     "price": 5990,
     "cantidad": 1
   },
@@ -51,7 +51,7 @@
       "aceitunas",
       "champiñones"
     ],
-    "name": "cuatro estaciones",
+    "name": "Cuatro Estaciones",
     "price": 9590,
     "cantidad": 1
   },
@@ -65,7 +65,7 @@
       "bacon",
       "orégano"
     ],
-    "name": "bacon",
+    "name": "Bacon",
     "price": 6450,
     "cantidad": 1
   },
@@ -79,7 +79,7 @@
       "pollo grillé",
       "orégano"
     ],
-    "name": "pollo picante",
+    "name": "Pollo Picante",
     "price": 8500,
     "cantidad": 1
   }
