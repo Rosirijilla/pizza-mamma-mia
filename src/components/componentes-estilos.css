@@ -77,3 +77,8 @@ footer{
     align-items: center;
 }
 /*Fin Css Footer*/
+.contador{
+  background-color: gold;
+  padding: 1rem;
+  border-radius: 1rem;
+}

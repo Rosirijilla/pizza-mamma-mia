@@ -3,10 +3,10 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
-//import Cart from "./components/Cart";
+import Cart from "./components/Cart";
 //import Register from "./components/Register";
 //import Login from "./components/Login";
-//import pizzas from "./components/pizzas.json"
+import pizzas from "./components/pizzas.json"
 
 
 
@@ -16,8 +16,8 @@ function App() {
   return <>
   <div>
     <Navbar count={count}/>
-    {/* <Cart pizzas={pizzas}/> */}
-    <Home count={count} setCount={setCount}/> 
+    <Cart pizzas={pizzas}/>
+    {/* <Home count={count} setCount={setCount}/>  */}
     {/* <Register/> */}
     {/* <Login/> */}
 
