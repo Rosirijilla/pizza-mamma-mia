@@ -1,15 +1,15 @@
 import React from "react";
 import "./componentes-estilos.css";
 
-function Cardpizza({img, name, desc, ingredients, price, count, setCount}) {
+function Cardpizza({img, name, desc, ingredients, price, total, setTotal}) {
 
   function agregar() {
-    setCount(count + price);
+    setTotal(total + price);
   }
 
   function quitar() {
-    if (count > 0) {
-      setCount(count - price);
+    if (total > 0) {
+      setTotal(total - price);
     }
   }
 

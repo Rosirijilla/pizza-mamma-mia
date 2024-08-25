@@ -9,13 +9,13 @@ import Footer from "./components/Footer";
 //import pizzas from "./components/pizzas.json"
 
 const App = () => {
-  const [count, setCount] = useState(0);
+  const [pizzas, setPizzas] = useState([]); //Mostrar Api
+  const [total, setTotal] = useState(0); //Sumar Navbar
 
   const obtenerInformacion = async () => {
     const respuesta = await fetch("http://localhost:5000/api/pizzas");
     const data = await respuesta.json();
-    setCount(data);
-    console.log(data)
+    setPizzas(data);
   };
   useEffect(() => {
     obtenerInformacion();
@@ -24,9 +24,9 @@ const App = () => {
   return (
     <>
       <div>
-        <Navbar count={count} />
+        <Navbar count={total} />
         {/* <Cart pizzas={pizzas}/> */}
-        <Home count={count} setCount={setCount} />
+        <Home pizzas={pizzas} total={total} setTotal={setTotal} />
         {/* <Register/> */}
         {/* <Login/> */}
         <Footer />

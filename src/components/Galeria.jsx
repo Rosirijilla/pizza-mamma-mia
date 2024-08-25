@@ -2,11 +2,11 @@ import React from "react";
 import Cardpizza from "./Cardpizza";
 import data from "./pizzas.json";
 
-function Galeria({count, setCount}) {
+function Galeria({pizzas, total, setTotal}) {
   return (
     <div className="container mt-5 mb-5 contenedor-cartas">
       <div className="row">
-        {data.map((pizza) => (
+        {pizzas.map((pizza) => (
           <div key={pizza.id} className="col-sm-12 col-md-6 col-lg-4 mt-5 mb-sm-3">
             <Cardpizza
               img={pizza.img}
@@ -15,8 +15,8 @@ function Galeria({count, setCount}) {
               name={pizza.name} 
               ingredients={pizza.ingredients}
               price={pizza.price} 
-              count={count}
-              setCount={setCount}
+              total={total}
+              setTotal={setTotal}
             />
           </div>
         ))}
