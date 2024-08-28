@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./componentes-estilos.css";
+import "../componentes-estilos.css";
 
 const Cart = ({ pizzas }) => {
   const [carrito, setCarrito] = useState(

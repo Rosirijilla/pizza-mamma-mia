@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
+import Home from "./pages/Home";
 import Footer from "./components/Footer";
-//import Cart from "./components/Cart";
-//import Register from "./components/Register";
-//import Login from "./components/Login";
-//import pizzas from "./components/pizzas.json"
+import Cart from "./pages/Cart";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import Logout from "./pages/Logout";
+import NotFound from "./pages/NotFound";
+//import pizzas from "./pages/pizzas.json"
 
 const App = () => {
   const [pizzas, setPizzas] = useState([]); //Mostrar Api
@@ -25,10 +29,15 @@ const App = () => {
     <>
       <div>
         <Navbar count={total} />
-        {/* <Cart pizzas={pizzas}/> */}
-        <Home pizzas={pizzas} total={total} setTotal={setTotal} />
-        {/* <Register/> */}
-        {/* <Login/> */}
+        <Routes>
+          <Route path="/home" element={<Home pizzas={pizzas} total={total} setTotal={setTotal} />}></Route>
+          <Route path="/register" element={<Register/>}></Route>
+          <Route path="/login" element={<Login/>}></Route>
+          <Route path="/profile" element={<Profile/>}></Route>
+          <Route path="/logout" element={<Logout/>}></Route>
+          <Route path="/cart" element={<Cart pizzas={pizzas}/>}></Route>
+          <Route path="/404" element={<NotFound/>}></Route>
+        </Routes>
         <Footer />
       </div>
     </>

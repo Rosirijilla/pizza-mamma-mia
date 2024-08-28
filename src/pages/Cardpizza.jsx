@@ -1,5 +1,5 @@
 import React from "react";
-import "./componentes-estilos.css";
+import "../componentes-estilos.css";
 
 function Cardpizza({img, name, desc, ingredients, price, total, setTotal}) {
 

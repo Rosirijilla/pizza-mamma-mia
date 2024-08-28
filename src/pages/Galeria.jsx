@@ -1,6 +1,6 @@
 import React from "react";
 import Cardpizza from "./Cardpizza";
-import data from "./pizzas.json";
+/* import data from "../pages/pizzas.json"; */
 
 function Galeria({pizzas, total, setTotal}) {
   return (
