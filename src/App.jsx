@@ -59,7 +59,7 @@ const App = () => {
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/logout" element={<Logout />}></Route>
           <Route path="/cart" element={<Cart pizzas={pizzas} />}></Route>
-          <Route path="/*" element={<NotFound />}></Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
         <Footer />
       </div>
