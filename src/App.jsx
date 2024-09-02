@@ -15,11 +15,23 @@ import NotFound from "./pages/NotFound";
 const App = () => {
   const [pizzas, setPizzas] = useState([]); //Mostrar Api
   const [total, setTotal] = useState(0); //Sumar Navbar
+  const [loading, setLoading] = useState(true); //Estado carga
+  const [error, setError] = useState(null); //Estado error
 
   const obtenerInformacion = async () => {
-    const respuesta = await fetch("http://localhost:5000/api/pizzas");
-    const data = await respuesta.json();
-    setPizzas(data);
+    try {
+      const respuesta = await fetch("http://localhost:5000/api/pizzas");
+      if (!respuesta.ok) {
+        throw new Error("Ups, hubo un error en la carga de los datos.");
+      }
+      const data = await respuesta.json();
+      setPizzas(data);
+    } catch (error) {
+      setError(error.mensaje);
+    } finally {
+      setLoading(false);
+      0;
+    }
   };
   useEffect(() => {
     obtenerInformacion();
@@ -27,16 +39,27 @@ const App = () => {
 
   return (
     <>
-      <div>
+      <div className="d-flex flex-column min-vh-100">
         <Navbar count={total} />
         <Routes>
-          <Route path="/home" element={<Home pizzas={pizzas} total={total} setTotal={setTotal} />}></Route>
-          <Route path="/register" element={<Register/>}></Route>
-          <Route path="/login" element={<Login/>}></Route>
-          <Route path="/profile" element={<Profile/>}></Route>
-          <Route path="/logout" element={<Logout/>}></Route>
-          <Route path="/cart" element={<Cart pizzas={pizzas}/>}></Route>
-          <Route path="/404" element={<NotFound/>}></Route>
+          <Route
+            path="/"
+            element={
+              <Home
+                pizzas={pizzas}
+                total={total}
+                setTotal={setTotal}
+                loading={loading}
+                error={error}
+              />
+            }
+          ></Route>
+          <Route path="/register" element={<Register />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/logout" element={<Logout />}></Route>
+          <Route path="/cart" element={<Cart pizzas={pizzas} />}></Route>
+          <Route path="/*" element={<NotFound />}></Route>
         </Routes>
         <Footer />
       </div>

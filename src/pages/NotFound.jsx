@@ -4,9 +4,8 @@ import "../componentes-estilos.css";
 function NotFound() {
   return (
     <div className="fondo-404">
-      <h1>404</h1>
-      <h2>Oh no, algo salió mal :(</h2>
-      <h3>Parece que el dueño de la página ya se durmió, tendrás que esperar a que se despierte u.u</h3>
+      <h1 className='titulo-404'>Oh no, algo salió mal :(</h1>
+      <span className='explicacion-404'>Parece que el dueño de la página ya se durmió, tendrás que esperar a que se despierte.</span>
     </div>
   )
 }

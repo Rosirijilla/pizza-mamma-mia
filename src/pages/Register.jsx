@@ -1,11 +1,15 @@
-import React from 'react';
-import Formulario from './Formulario';
+import React from "react";
+import Formulario from "./Formulario";
 
 function Register() {
   return (
-    <div>
-      <h1>Registra tu Cuenta</h1>
-      <Formulario />
+    <div className="container vh-100 mt-5">
+      <div className="row">
+        <div className="col-12 col-md-6 col-sm-3">
+          <h1>Registra tu Cuenta</h1>
+          <Formulario />
+        </div>
+      </div>
     </div>
   );
 }

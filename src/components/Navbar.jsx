@@ -15,9 +15,7 @@ const Navbar = ({ count }) => {
   return (
     <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          Pizzería Mamma Mia!
-        </a>
+        <Link to="/" className="navbar-brand">Pizzería Mamma Mia!</Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -33,7 +31,7 @@ const Navbar = ({ count }) => {
         <div className="collapse navbar-collapse" id="navbarText">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link to="/home" className="nav-link active" aria-current="page">
+              <Link to="/" className="nav-link active" aria-current="page">
                 <FontAwesomeIcon className="icon" icon={faPizzaSlice} />
                 Home
               </Link>
