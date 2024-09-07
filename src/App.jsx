@@ -10,7 +10,7 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Logout from "./pages/Logout";
 import NotFound from "./pages/NotFound";
-//import pizzas from "./pages/pizzas.json"
+import CartProvider from "./context/CartContext";
 
 const App = () => {
   const [pizzas, setPizzas] = useState([]); //Mostrar Api
@@ -30,7 +30,6 @@ const App = () => {
       setError(error.mensaje);
     } finally {
       setLoading(false);
-      0;
     }
   };
   useEffect(() => {
@@ -39,30 +38,32 @@ const App = () => {
 
   return (
     <>
-      <div className="d-flex flex-column min-vh-100">
-        <Navbar count={total} />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                pizzas={pizzas}
-                total={total}
-                setTotal={setTotal}
-                loading={loading}
-                error={error}
-              />
-            }
-          ></Route>
-          <Route path="/register" element={<Register />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/profile" element={<Profile />}></Route>
-          <Route path="/logout" element={<Logout />}></Route>
-          <Route path="/cart" element={<Cart pizzas={pizzas} />}></Route>
-          <Route path="*" element={<NotFound />}></Route>
-        </Routes>
-        <Footer />
-      </div>
+      <CartProvider>
+        <div className="d-flex flex-column">
+          <Navbar/>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  pizzas={pizzas}
+                  /* total={total} */
+                  setTotal={setTotal}
+                  loading={loading}
+                  error={error}
+                />
+              }
+            ></Route>
+            <Route path="/register" element={<Register />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="/profile" element={<Profile />}></Route>
+            <Route path="/logout" element={<Logout />}></Route>
+            <Route path="/cart" element={<Cart pizzas={pizzas} />}></Route>
+            <Route path="*" element={<NotFound />}></Route>
+          </Routes>
+          <Footer />
+        </div>
+      </CartProvider>
     </>
   );
 };

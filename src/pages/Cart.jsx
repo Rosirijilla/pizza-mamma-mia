@@ -1,58 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
+import { useCart } from "../context/CartContext";
 import "../componentes-estilos.css";
 
-const Cart = ({ pizzas }) => {
-  const [carrito, setCarrito] = useState(
-    pizzas.map((pizza) => ({
-      ...pizza,
-      count: 1,
-    }))
-  );
-
-  let total = carrito.reduce(
-    (acumulador, pizza) => acumulador + pizza.count,
-    0
-  );
-
-  let totalPagar = carrito.reduce(
-    (acumulador, pizza) => acumulador + pizza.price * pizza.count,
-    0
-  );
-
-  const obtenerCantidad = (pizza) => {
-    const itemEnCarrito = carrito.find((item) => item.id === pizza.id);
-    return itemEnCarrito ? itemEnCarrito.count : 0;
-  };
+const Cart = () => {
+  const { carrito, eliminarPizza, actualizarCantidad, totalPagar } = useCart();
 
   const incrementar = (pizza) => {
-    setCarrito((prevCarrito) => {
-      const coincidencia = prevCarrito.find((item) => item.id === pizza.id);
-
-      if (coincidencia) {
-        return prevCarrito.map((item) =>
-          item.id === pizza.id ? { ...item, count: item.count + 1 } : item
-        );
-      } else {
-        return [...prevCarrito, { ...pizza, count: 1 }];
-      }
-    });
+    actualizarCantidad(pizza.id, pizza.count + 1);
   };
 
   const decrementar = (pizza) => {
-    setCarrito((prevCarrito) => {
-      const coincidencia = prevCarrito.find((item) => item.id === pizza.id);
-
-      if (coincidencia) {
-        if (coincidencia.count > 1) {
-          return prevCarrito.map((item) =>
-            item.id === pizza.id ? { ...item, count: item.count - 1 } : item
-          );
-        } else {
-          return prevCarrito.filter((item) => item.id !== pizza.id);
-        }
-      }
-      return prevCarrito;
-    });
+    if (pizza.count > 1) {
+      actualizarCantidad(pizza.id, pizza.count - 1);
+    } else {
+      eliminarPizza(pizza.id);
+    }
   };
 
   return (
@@ -66,7 +28,13 @@ const Cart = ({ pizzas }) => {
         <div className="col-12">
           <div className="contadores d-flex flex-column flex-md-row justify-content-between gap-1">
             <span className="contador fw-bold shadow-sm">
-              Cantidad de pizzas: {total}
+              Cantidad de pizzas:{" "}
+              {carrito.length === 0
+                ? "El carrito está vacío"
+                : carrito.reduce(
+                    (acumulador, pizza) => acumulador + pizza.count,
+                    0
+                  )}
             </span>
             <span className="contador fw-bold shadow-sm">
               Total a pagar:{" "}
@@ -79,9 +47,12 @@ const Cart = ({ pizzas }) => {
         </div>
       </div>
       <div className="row pizzas-carro mt-4">
-        {carrito.map((pizza) => {
-          const cantidad = obtenerCantidad(pizza);
-          return cantidad > 0 ? (
+        {carrito.length === 0 ? (
+          <div className="col-12 text-center">
+            <p>El carrito está vacío</p>
+          </div>
+        ) : (
+          carrito.map((pizza) => (
             <div className="col-sm-12 col-md-6 col-lg-4 mb-3" key={pizza.id}>
               <div className="d-flex align-items-center h-100 border p-3">
                 <div className="contenido-pizza flex-grow-1">
@@ -92,7 +63,7 @@ const Cart = ({ pizzas }) => {
                   />
                   <div className="d-flex justify-content-around align-items-center">
                     <p className="mb-1 fw-semibold">{pizza.name}</p>
-                    <p className="mb-1 fw-semibold">Cantidad: {cantidad}</p>
+                    <p className="mb-1 fw-semibold">Cantidad: {pizza.count}</p>
                     <div className="d-flex align-items-center justify-content-center gap-1">
                       <button
                         className="btn btn-success"
@@ -103,19 +74,22 @@ const Cart = ({ pizzas }) => {
                       <button
                         className="btn btn-danger"
                         onClick={() => decrementar(pizza)}
-                      >-
+                      >
+                        -
                       </button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          ) : null;
-        })}
+          ))
+        )}
       </div>
       <div className="row mt-4">
         <div className="col-12 text-center">
-          <button className="btn btn-primary btn-lg mb-5 pagar">Pagar 💳</button>
+          <button className="btn btn-primary btn-lg mb-5 pagar">
+            Pagar 💳
+          </button>
         </div>
       </div>
     </div>

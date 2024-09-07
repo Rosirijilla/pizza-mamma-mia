@@ -8,14 +8,17 @@ import {
   faUser,
   faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
+import { useCart } from "../context/CartContext";
 
-const Navbar = ({ count }) => {
-  const total = count;
+const Navbar = () => {
+  const { totalPagar } = useCart();
   const token = false;
   return (
     <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
       <div className="container-fluid">
-        <Link to="/" className="navbar-brand">Pizzería Mamma Mia!</Link>
+        <Link to="/" className="navbar-brand">
+          Pizzería Mamma Mia!
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -78,7 +81,7 @@ const Navbar = ({ count }) => {
               {new Intl.NumberFormat("es-CL", {
                 currency: "CLP",
                 style: "currency",
-              }).format(total)}
+              }).format(totalPagar)}
             </span>
           </Link>
         </div>
