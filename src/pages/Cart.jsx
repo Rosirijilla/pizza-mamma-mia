@@ -1,9 +1,15 @@
 import React from "react";
 import { useCart } from "../context/CartContext";
+import { usePizzaContext } from "../context/PizzaContext";
 import "../componentes-estilos.css";
 
 const Cart = () => {
   const { carrito, eliminarPizza, actualizarCantidad, totalPagar } = useCart();
+  const { pizzas } = usePizzaContext(); 
+
+  const findPizzaById = (id) => {
+    return pizzas.find((pizza) => pizza.id === id);
+  };
 
   const incrementar = (pizza) => {
     actualizarCantidad(pizza.id, pizza.count + 1);
@@ -52,42 +58,48 @@ const Cart = () => {
             <p>El carrito está vacío</p>
           </div>
         ) : (
-          carrito.map((pizza) => (
-            <div className="col-sm-12 col-md-6 col-lg-4 mb-3" key={pizza.id}>
-              <div className="d-flex align-items-center h-100 border p-3">
-                <div className="contenido-pizza flex-grow-1">
-                  <img
-                    src={pizza.img}
-                    className="img-fluid img-tamaño mb-2"
-                    alt={pizza.name}
-                  />
-                  <div className="d-flex justify-content-around align-items-center">
-                    <p className="mb-1 fw-semibold">{pizza.name}</p>
-                    <p className="mb-1 fw-semibold">Cantidad: {pizza.count}</p>
-                    <div className="d-flex align-items-center justify-content-center gap-1">
-                      <button
-                        className="btn btn-success"
-                        onClick={() => incrementar(pizza)}
-                      >
-                        +
-                      </button>
-                      <button
-                        className="btn btn-danger"
-                        onClick={() => decrementar(pizza)}
-                      >
-                        -
-                      </button>
+          carrito.map((carritoItem) => {
+            const pizza = findPizzaById(carritoItem.id); 
+            return pizza ? (
+              <div className="col-sm-12 col-md-6 col-lg-4 mb-3" key={pizza.id}>
+                <div className="d-flex align-items-center h-100 border p-3">
+                  <div className="contenido-pizza flex-grow-1">
+                    <img
+                      src={pizza.img}
+                      className="img-fluid img-tamaño mb-2"
+                      alt={`Imagen de ${pizza.name}`}
+                    />
+                    <div className="d-flex justify-content-around align-items-center">
+                      <p className="mb-1 fw-semibold">{pizza.name}</p>
+                      <p className="mb-1 fw-semibold">Cantidad: {carritoItem.count}</p>
+                      <div className="d-flex align-items-center justify-content-center gap-1">
+                        <button
+                          className="btn btn-success"
+                          onClick={() => incrementar(carritoItem)}
+                        >
+                          +
+                        </button>
+                        <button
+                          className="btn btn-danger"
+                          onClick={() => decrementar(carritoItem)}
+                        >
+                          -
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))
+            ) : null;
+          })
         )}
       </div>
       <div className="row mt-4">
         <div className="col-12 text-center">
-          <button className="btn btn-primary btn-lg mb-5 pagar">
+          <button
+            className="btn btn-primary btn-lg mb-5 pagar"
+            disabled={carrito.length === 0} 
+          >
             Pagar 💳
           </button>
         </div>

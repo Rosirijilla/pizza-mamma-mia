@@ -1,9 +1,19 @@
 import React from "react";
 import "../componentes-estilos.css";
 import { useCart } from "../context/CartContext";
+import { usePizzaContext } from "../context/PizzaContext";
 
-function Cardpizza({ id, img, name, ingredients, price }) {
+function Cardpizza({ id }) {
   const { agregarPizza, eliminarPizza } = useCart();
+  const { pizzas } = usePizzaContext();
+
+  const pizza = pizzas.find(pizza => pizza.id === id);
+
+  if (!pizza) {
+    return <p>Pizza no encontrada</p>;
+  }
+
+  const { img, name, ingredients, price } = pizza;
 
   function ingredientesX(ingredients) {
     return (
@@ -17,12 +27,10 @@ function Cardpizza({ id, img, name, ingredients, price }) {
     );
   }
 
-  const pizza = { id, img, name, price };
-
   return (
     <div>
       <div className="card">
-        <img src={img} className="card-img-top" alt={name} />
+        <img src={img} className="card-img-top" alt={`Imagen de ${name}`} />
         <div className="card-body">
           <h5 className="card-title">{name}</h5>
           <p className="card-text ingredientes">
