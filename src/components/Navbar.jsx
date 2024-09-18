@@ -1,6 +1,6 @@
 import React from "react";
 import "../componentes-estilos.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPizzaSlice,
@@ -34,39 +34,63 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarText">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link to="/" className="nav-link active" aria-current="page">
+              <NavLink
+                to="/"
+                className={({ isActive }) => (isActive ? "active" : "inactive")}
+                aria-current="page"
+              >
                 <FontAwesomeIcon className="icon" icon={faPizzaSlice} />
                 Home
-              </Link>
+              </NavLink>
             </li>
             {token ? (
               <>
                 <li className="nav-item">
-                  <Link to="/profile" className="nav-link">
+                  <NavLink
+                    to="/profile"
+                    className={({ isActive }) =>
+                      isActive ? "active" : "inactive"
+                    }
+                  >
                     <FontAwesomeIcon className="icon" icon={faUser} />
                     Profile
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to="/logout" className="nav-link">
+                  <NavLink
+                    to="/logout"
+                    className={({ isActive }) =>
+                      isActive ? "active" : "inactive"
+                    }
+                  >
                     <FontAwesomeIcon className="icon" icon={faLock} />
                     Logout
-                  </Link>
+                  </NavLink>
                 </li>
               </>
             ) : (
               <>
                 <li className="nav-item">
-                  <Link to="/login" className="nav-link">
+                  <NavLink
+                    to="/login"
+                    className={({ isActive }) =>
+                      isActive ? "active" : "inactive"
+                    }
+                  >
                     <FontAwesomeIcon className="icon" icon={faLock} />
                     Login
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to="/register" className="nav-link">
+                  <NavLink
+                    to="/register"
+                    className={({ isActive }) =>
+                      isActive ? "active" : "inactive"
+                    }
+                  >
                     <FontAwesomeIcon className="icon" icon={faLock} />
                     Register
-                  </Link>
+                  </NavLink>
                 </li>
               </>
             )}

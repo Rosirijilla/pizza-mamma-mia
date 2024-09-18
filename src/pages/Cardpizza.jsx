@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../componentes-estilos.css";
 import { useCart } from "../context/CartContext";
 import { usePizzaContext } from "../context/PizzaContext";
@@ -7,7 +8,7 @@ function Cardpizza({ id }) {
   const { agregarPizza, eliminarPizza } = useCart();
   const { pizzas } = usePizzaContext();
 
-  const pizza = pizzas.find(pizza => pizza.id === id);
+  const pizza = pizzas.find((pizza) => pizza.id === id);
 
   if (!pizza) {
     return <p>Pizza no encontrada</p>;
@@ -43,13 +44,13 @@ function Cardpizza({ id }) {
             }).format(price)}
           </p>
           <div className="botones">
-            <a
-              href="#"
+            <Link
+              to={`/pizza/${id}`}
               className="btn btn-light btn-outline-dark"
-              onClick={(e) => e.preventDefault()}
+              /* onClick={(e) => e.preventDefault()} */
             >
               Ver Más 👀
-            </a>
+            </Link>
             <a
               href="#"
               className="btn btn-dark"

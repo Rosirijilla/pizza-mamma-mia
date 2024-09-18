@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -12,6 +11,7 @@ import Logout from "./pages/Logout";
 import NotFound from "./pages/NotFound";
 import CartProvider from "./context/CartContext";
 import { PizzaProvider } from "./context/PizzaContext";
+import Pizza from "./pages/Pizza"
 
 const App = () => {
 
@@ -23,6 +23,7 @@ const App = () => {
             <Navbar />
             <Routes>
               <Route path="/" element={<Home />}></Route>
+              <Route path="/pizza/:id" element={<Pizza/>}></Route>
               <Route path="/register" element={<Register />}></Route>
               <Route path="/login" element={<Login />}></Route>
               <Route path="/profile" element={<Profile />}></Route>

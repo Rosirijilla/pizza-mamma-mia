@@ -2,10 +2,13 @@
 .navbar-nav {
   gap: 0.5rem;
 }
-.nav-item {
-  border: 1px solid white;
+.inactive {
+  border: 1px solid #c9c9c9;
   border-radius: 5px;
   font-size: 14px;
+  text-decoration: none;
+  color: #c9c9c9;
+  padding: 0.5rem;
 }
 .icon{
     padding-right: 0.5rem;
@@ -13,6 +16,13 @@
 
 .icon-compra{
     color: white;
+}
+.active{
+  color: white;
+  text-decoration: none;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 0.5rem;
 }
 /*Componentes Navbar*/
 

@@ -26,8 +26,12 @@ export const PizzaProvider = ({ children }) => {
     getData();
   }, []);
 
+  const getPizzaId = (id) => {
+    return pizzas.find((pizza) => pizza.id ===id);
+  }
+
   return (
-    <PizzaContext.Provider value={{ pizzas, loading, error }}>
+    <PizzaContext.Provider value={{ pizzas, loading, error, getPizzaId }}>
       {children}
     </PizzaContext.Provider>
   );
