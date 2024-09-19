@@ -2,10 +2,12 @@ import React from "react";
 import { useCart } from "../context/CartContext";
 import { usePizzaContext } from "../context/PizzaContext";
 import "../componentes-estilos.css";
+import { useUserContext } from "../context/UserContext";
 
 const Cart = () => {
   const { carrito, eliminarPizza, actualizarCantidad, totalPagar } = useCart();
   const { pizzas } = usePizzaContext(); 
+  const {token} = useUserContext();
 
   const findPizzaById = (id) => {
     return pizzas.find((pizza) => pizza.id === id);
@@ -98,7 +100,7 @@ const Cart = () => {
         <div className="col-12 text-center">
           <button
             className="btn btn-primary btn-lg mb-5 pagar"
-            disabled={carrito.length === 0} 
+            disabled={carrito.length === 0 || !token} 
           >
             Pagar 💳
           </button>

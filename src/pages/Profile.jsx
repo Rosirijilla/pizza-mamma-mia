@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../componentes-estilos.css";
+import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../context/UserContext";
 
 const Profile = () => {
+  const { token } = useUserContext();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, [token, navigate]);
+
   return (
     <div>
       <h1>Tu Perfil</h1>
@@ -14,7 +25,9 @@ const Profile = () => {
         <span>
           <b>Correo:</b>juanito_xd@gmail.com
         </span>
-        <span><b>Creación cuenta</b>00/00/00</span>
+        <span>
+          <b>Creación cuenta</b>00/00/00
+        </span>
       </div>
       <button>Cerrar Sesión</button>
     </div>

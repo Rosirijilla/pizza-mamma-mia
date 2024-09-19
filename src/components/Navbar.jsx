@@ -9,10 +9,11 @@ import {
   faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
 import { useCart } from "../context/CartContext";
+import { useUserContext } from "../context/UserContext";
 
 const Navbar = () => {
   const { totalPagar } = useCart();
-  const token = false;
+  const {token, logout} = useUserContext();
   return (
     <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
       <div className="container-fluid">
@@ -57,15 +58,10 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink
-                    to="/logout"
-                    className={({ isActive }) =>
-                      isActive ? "active" : "inactive"
-                    }
-                  >
+                  <button onClick={logout}>
                     <FontAwesomeIcon className="icon" icon={faLock} />
                     Logout
-                  </NavLink>
+                  </button>
                 </li>
               </>
             ) : (
