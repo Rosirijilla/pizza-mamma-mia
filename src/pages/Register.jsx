@@ -1,7 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Formulario from "./Formulario";
+import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../context/UserContext";
 
 function Register() {
+  const {token} = useUserContext();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (token) {
+      navigate("/login");
+    }
+  }, [token, navigate]);
+
   return (
     <div className="container vh-100 mt-5">
       <div className="row">

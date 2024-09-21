@@ -1,7 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../context/UserContext";
 
 const Formulario = () => {
   // Estados del formulario
+  const { setToken } = useUserContext();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
@@ -35,19 +39,25 @@ const Formulario = () => {
       return;
     }
 
+
     // Si el formulario se envía correctamente, mostrar mensaje de éxito
     setError("");
     setExito(true);
     setEmail("");
     setPassword("");
     setConfirm("");
+
+    setToken(true);
+    navigate("/login");
   };
 
   return (
     <>
       <form className="formulario" onSubmit={validarDatos}>
         {error && <p style={{ color: "red" }}>{error}</p>}
-        {exito && <p style={{ color: "green" }}>Formulario enviado con éxito</p>}
+        {exito && (
+          <p style={{ color: "green" }}>Formulario enviado con éxito</p>
+        )}
 
         <div className="form-group">
           <input

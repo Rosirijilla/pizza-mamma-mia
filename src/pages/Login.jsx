@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
 
 const Login = () => {
-  const { token } = useUserContext();
+  const { token, setToken } = useUserContext();
   const navigate = useNavigate();
 
   useEffect(()=>{
@@ -18,7 +18,7 @@ const Login = () => {
       <div className="row">
         <div className="col-12 col-md-6 col-sm-3"></div>
         <h1>Ingresa a tu Cuenta</h1>
-        <Formulario2 />
+        <Formulario2 setToken={setToken}/>
       </div>
     </div>
   );
