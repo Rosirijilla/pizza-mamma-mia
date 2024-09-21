@@ -33,7 +33,7 @@ const Navbar = () => {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarText">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
             <li className="nav-item">
               <NavLink
                 to="/"
@@ -58,7 +58,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <button onClick={logout}>
+                  <button onClick={logout} className="btn btn-secondary">
                     <FontAwesomeIcon className="icon" icon={faLock} />
                     Logout
                   </button>
