@@ -13,7 +13,12 @@ import { useUserContext } from "../context/UserContext";
 
 const Navbar = () => {
   const { totalPagar } = useCart();
-  const {token, logout} = useUserContext();
+  const { token, logout } = useUserContext();
+
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
       <div className="container-fluid">
@@ -58,7 +63,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <button onClick={logout} className="btn btn-secondary">
+                  <button onClick={handleLogout} className="btn btn-secondary">
                     <FontAwesomeIcon className="icon" icon={faLock} />
                     Logout
                   </button>

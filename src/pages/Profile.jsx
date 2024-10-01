@@ -1,17 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../componentes-estilos.css";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
 
 const Profile = () => {
-  const { token, logout } = useUserContext();
+  const { token, logout, email, getUserProfile } = useUserContext();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!token) {
       navigate("/login");
+    }else{
+      getUserProfile();
     }
-  }, [token, navigate]);
+  }, [token, navigate, getUserProfile]);
 
   const cerrarSesion = () => {
     logout();
@@ -30,7 +32,7 @@ const Profile = () => {
               alt="Persona Random"
             />
             <span>
-              <b>Correo: </b>juanito_xd@gmail.com
+              <b>Correo: </b>{email}
             </span>
             <span>
               <b>Creación cuenta: </b>00/00/00

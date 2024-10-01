@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
 import { usePizzaContext } from "../context/PizzaContext";
 import "../componentes-estilos.css";
 import { useUserContext } from "../context/UserContext";
+import axios from "axios";
 
 const Cart = () => {
   const { carrito, eliminarPizza, actualizarCantidad, totalPagar } = useCart();
-  const { pizzas } = usePizzaContext(); 
-  const {token} = useUserContext();
+  const { pizzas } = usePizzaContext();
+  const { token } = useUserContext();
+  const [message, setMessage] = useState("");
+
+  const checkout = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/checkouts",
+        { cart: carrito },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setMessage("Compra realizada con éxito! 😁");
+    } catch (error){
+      setMessage(error.response?.data?.message || "Error en la compra ☹️");
+      console.error(error);
+    }
+  };
 
   const findPizzaById = (id) => {
     return pizzas.find((pizza) => pizza.id === id);
@@ -61,7 +81,7 @@ const Cart = () => {
           </div>
         ) : (
           carrito.map((carritoItem) => {
-            const pizza = findPizzaById(carritoItem.id); 
+            const pizza = findPizzaById(carritoItem.id);
             return pizza ? (
               <div className="col-sm-12 col-md-6 col-lg-4 mb-3" key={pizza.id}>
                 <div className="d-flex align-items-center h-100 border p-3">
@@ -73,7 +93,9 @@ const Cart = () => {
                     />
                     <div className="d-flex justify-content-around align-items-center">
                       <p className="mb-1 fw-semibold">{pizza.name}</p>
-                      <p className="mb-1 fw-semibold">Cantidad: {carritoItem.count}</p>
+                      <p className="mb-1 fw-semibold">
+                        Cantidad: {carritoItem.count}
+                      </p>
                       <div className="d-flex align-items-center justify-content-center gap-1">
                         <button
                           className="btn btn-success"
@@ -100,10 +122,11 @@ const Cart = () => {
         <div className="col-12 text-center">
           <button
             className="btn btn-primary btn-lg mb-5 pagar"
-            disabled={carrito.length === 0 || !token} 
+            disabled={carrito.length === 0 || !token} onClick={checkout}
           >
             Pagar 💳
           </button>
+          {message && <p>{message}</p>}
         </div>
       </div>
     </div>
